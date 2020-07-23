@@ -2,7 +2,7 @@
 namespace App\Services;
 
 use App\Models\Users;
-use App\Repositories\UsersRepsitory;
+use App\Repositories\UsersRepository;
 use PDOException;
 
 class UsersServices{
@@ -11,7 +11,7 @@ class UsersServices{
 
     public function __construct()
     {
-        $this->_Repos = new UsersRepsitory;
+        $this->_Repos = new UsersRepository;
     }
 
     public function getAll() : array {

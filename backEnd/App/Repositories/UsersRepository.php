@@ -5,7 +5,7 @@ use PDO;
 use App\Models\Users;
 use VentasDimeca\Database\DbProvider;  
 
-class UsersRepsitory{
+class UsersRepository{
 
     private $_db;
 
