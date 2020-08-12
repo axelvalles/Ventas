@@ -5,6 +5,7 @@ use App\Models\Users;
 use App\Repositories\UsersRepository;
 use PDOException;
 
+
 class UsersServices{
 
     private $_Repos;
@@ -42,10 +43,10 @@ class UsersServices{
     public function add(Users $model) :void  {
         try {
             $this->_Repos->add($model);
-            echo 'usuario creado exitosamente';
+            echo json_encode('usuario creado exitosamente');
             
         } catch (PDOException $ex) {
-            echo $ex;
+            echo json_encode($ex);
         }
 
     }
@@ -71,6 +72,32 @@ class UsersServices{
         } catch (PDOException $ex) {
             echo $ex;
         }
+
+    }
+
+    public function verifyLog(string $user, string $pass){
+
+        try {
+            $result= $this->_Repos->verifyLog($user,$pass);
+
+            if($result){
+
+                session_start();
+                $_SESSION['user']= array(
+                    'user' => $result[0]->user,
+                    'rol' => $result[0]->role,
+                    'id' => $result[0]->id
+
+                );
+            }else{
+                $result=null;
+            }
+
+        } catch (PDOException $ex) {
+            echo $ex;
+        }
+
+        return $result;
 
     }
 }

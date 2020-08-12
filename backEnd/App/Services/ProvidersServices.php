@@ -39,15 +39,16 @@ class ProvidersServices{
 
     }
 
-    public function add(Providers $model) :void  {
+    public function add(Providers $model) :string  {
+        $result='';
         try {
             $this->_Repos->add($model);
-            echo 'provider creado exitosamente';
+            $result= 'ok';
             
         } catch (PDOException $ex) {
-            echo $ex;
+            $result= 'error';
         }
-
+        return $result;
     }
 
     public function update(Providers $model) :void  {

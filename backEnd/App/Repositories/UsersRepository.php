@@ -44,7 +44,7 @@ class UsersRepository{
 
     }
 
-    public function add(Users $model) :void  {
+    public function add(Users $model)  {
 
         $now = date('Y-m-d H:i:s');
 
@@ -78,6 +78,20 @@ public function delete(int $id) :void  {
         $query = $this->_db->prepare('DELETE FROM users WHERE id=:id ');  
         $query->bindParam(':id',$id);
         $query->execute();
+
+}
+
+
+public function verifyLog(string $user, string $pass){
+
+    $query = $this->_db->prepare('SELECT * FROM users WHERE user=:user AND pass=:pass');
+    $query->bindParam(':user',$user);
+    $query->bindParam(':pass',$pass);
+    $query->execute();
+
+    $result = $query->fetchAll();
+
+    return $result;
 
 }
 

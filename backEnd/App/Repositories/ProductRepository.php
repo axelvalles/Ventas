@@ -4,6 +4,7 @@ namespace App\Repositories;
 use App\Models\Product;
 use VentasDimeca\Database\DbProvider;
 use PDO;
+use PDOException;
 
 class ProductRepository{
 
@@ -17,10 +18,13 @@ class ProductRepository{
     public function findAll(): Array {
 
         $result=[];
-
-        $query = $this->_db->prepare('SELECT * FROM products');
-        $query->execute();
-        $result = $query->fetchAll(PDO::FETCH_CLASS, 'App\Models\Product');
+        try{
+            $query = $this->_db->prepare('SELECT * FROM products');
+            $query->execute();
+            $result = $query->fetchAll(PDO::FETCH_CLASS, 'App\Models\Product');
+        }catch(PDOException $e){
+            $result = [];
+        }
 
         return $result;
 

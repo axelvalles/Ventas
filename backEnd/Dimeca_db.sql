@@ -61,6 +61,8 @@ create table  if not EXISTS products
     code varchar(25) not null,
     description varchar(50) default null,
     price float not null,
+    cost float not null,
+    stock int not null,
     id_user int NOT NULL,
     id_provider int  NOT NULL,
     create_at datetime DEFAULT CURRENT_TIMESTAMP,
