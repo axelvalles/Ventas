@@ -153,15 +153,15 @@ checkSession();
             </div>
             <div class="form-group">
               <label for="priceAdd">Precio</label>
-              <input type="text" class="form-control" name="priceAdd" id="priceAdd">
+              <input type="number" class="form-control" name="priceAdd" id="priceAdd">
             </div>
             <div class="form-group">
               <label for="costAdd">Costo</label>
-              <input type="text" class="form-control" name="costAdd" id="costAdd">
+              <input type="number" class="form-control" name="costAdd" id="costAdd">
             </div>
             <div class="form-group">
               <label for="stockAdd">Cantidad</label>
-              <input type="text" class="form-control" name="stockAdd" id="stockAdd">
+              <input type="number" class="form-control" name="stockAdd" id="stockAdd">
             </div>
             
           </form>
@@ -191,23 +191,31 @@ checkSession();
         <div class="modal-body">
           <form id="formEdit">
             <div class="form-group">
-            <input type="text" class="form-control d-none" name="idEdit" id="idEdit" >
-              <label for="nameAdd">Nombre/Empresa</label>
-              <input type="text" class="form-control" name="nameEdit" id="nameEdit" >
+            <input type="text" class="form-control" name="id" id="id" >
+              <label for="codeEdit">Codigo</label>
+              <input type="text" class="form-control" name="codeEdit" id="codeEdit" >
             </div>
             <div class="form-group">
-              <label for="phoneAdd">Telefono</label>
-              <input type="text" class="form-control" name="phoneEdit" id="phoneEdit">
+              <label for="DescriptionEdit">Descripcion</label>
+              <input type="text" class="form-control" name="descriptionEdit" id="descripEdit">
             </div>
             <div class="form-group">
-              <label for="nidAdd">Cedula/Rif</label>
-              <input type="text" class="form-control" name="dniEdit" id="dniEdit">
+              <label for="priceEdit">Precio</label>
+              <input type="number" class="form-control" name="priceEdit" id="priceEdit">
+            </div>
+            <div class="form-group">
+              <label for="costEdit">Costo</label>
+              <input type="number" class="form-control" name="costEdit" id="costEdit">
+            </div>
+            <div class="form-group">
+              <label for="stockEdit">Cantidad</label>
+              <input type="number" class="form-control" name="stockEdit" id="stockEdit">
             </div>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button onclick="editProvider()" id="btnSubmitEdit" class="btn btn-primary">Editar</button>
+          <button onclick="editProduct()" id="btnSubmitEdit" class="btn btn-primary">Editar</button>
         </div>
       </div>
     </div>

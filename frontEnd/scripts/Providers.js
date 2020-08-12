@@ -147,12 +147,11 @@ let table = document.getElementById('table')
         })
     }
 
-    const modalEdit = (id,) =>{
+    const modalEdit = (id) =>{
         document.getElementById('idEdit').value= ''
         document.getElementById('nameEdit').value= ''
         document.getElementById('phoneEdit').value=''
         document.getElementById('dniEdit').value= ''
-
         document.getElementById('idEdit').value= id
 
     }

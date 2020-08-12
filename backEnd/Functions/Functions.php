@@ -12,6 +12,16 @@
         return $newVar;
     }
 
+    function cleanNumber($var) {
+
+        $newVar = $var;
+        if($newVar<=0){
+        throw new Exception("Error de campos obligatorios", 1);
+            
+        }
+        return $newVar;
+    }
+
     function destroySession(){
         session_start();
         $_SESSION = array();
