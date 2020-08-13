@@ -1,19 +1,7 @@
 const form = document.getElementById("form");
 const user = document.getElementById("user").value;
 const pass = document.getElementById("password").value;
-
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  console.log("me diste un click");
-
-  formData = new FormData(form);
-
-  console.log(user);
-  console.log(pass);
-  get();
-});
-
-let get = () => {
+const get = () => {
   fetch("backEnd/Functions/Login/VerifyUsers.php", {
     method: "POST",
     body: formData,
@@ -30,19 +18,19 @@ let get = () => {
         });
 
         setTimeout(function () {
-          window.location = "/dimeca/frontend/views/main.php";
+          window.location = "frontEnd/views/Main.php";
         }, 1500);
       } else {
         Swal.fire({
           icon: "error",
           title: "Error",
-          text: "El usuario no existe :(",
+          text: "El usuario y/o contraseña invalidos :(",
         });
       }
     });
 };
 
-let getData = async (url, method, data) => {
+const getData = async (url, method, data) => {
   const location = url;
   const settings = {
     method: method,
@@ -60,3 +48,11 @@ let getData = async (url, method, data) => {
     console.log(e);
   }
 };
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  console.log("me diste un click");
+  formData = new FormData(form);
+  console.log(user);
+  console.log(pass);
+  get();
+});
