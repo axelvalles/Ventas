@@ -1,12 +1,9 @@
-<?php 
-define('__CONFIG__',[
+<?php
+define('__CONFIG__', [
     'db' => [
-        'host' =>'mysql:host=localhost;dbname=ventasdimeca;charset=utf8',
+        'host' => 'mysql:host=localhost;dbname=ventasdimeca;charset=utf8',
         'user' => 'root',
-        'pass' => 'root'
+        'pass' => 'root123*'
 
     ]
 ]);
-
-
-
