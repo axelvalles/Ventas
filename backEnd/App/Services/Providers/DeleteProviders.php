@@ -13,8 +13,6 @@ use App\Models\Providers;
 
     if(isset($_POST['id'])){
         $id = $_POST['id'];
-        echo json_encode($services->delete($id));
-            
-    }else{
-        echo json_encode('error');
+        $services->delete($id);
+        
     }

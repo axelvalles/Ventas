@@ -51,13 +51,13 @@ checkSession();
           <li class="nav-item">
             <a class="nav-link" href="Main.php">Inicio</a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item ">
             <a class="nav-link" href="Providers.php">Proveedores</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="Products.php">Prodcutos</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="Clients.php">Clientes</a>
           </li>
           <li class="nav-item">
@@ -92,7 +92,7 @@ checkSession();
 
   <!--container main-->
   <div class="container">
-    <h3 class="mb-3">Lista de Proveedores</h3>
+    <h3 class="mb-3">Lista de Clientes</h3>
     <button onclick="cleanModalAdd()" type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#ModalAdd">Agregar
       <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor"
         xmlns="http://www.w3.org/2000/svg">
@@ -106,9 +106,9 @@ checkSession();
       <thead class="thead-dark text-center">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Nombre/Empresa</th>
+          <th scope="col">Nombre</th>
           <th scope="col">Telefono</th>
-          <th scope="col">Cedula/Rif</th>
+          <th scope="col">Cedula</th>
           <th scope="col">Editar</th>
           <th scope="col">Eliminar</th>
         </tr>
@@ -127,7 +127,7 @@ checkSession();
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Agregar Proveedores</h5>
+          <h5 class="modal-title" id="staticBackdropLabel">Agregar Clientes</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -135,7 +135,7 @@ checkSession();
         <div class="modal-body">
           <form id="formAdd">
             <div class="form-group">
-              <label for="nameAdd">Nombre/Empresa</label>
+              <label for="nameAdd">Nombre</label>
               <input type="text" class="form-control" name="nameAdd" id="nameAdd" >
             </div>
             <div class="form-group">
@@ -143,14 +143,14 @@ checkSession();
               <input type="text" class="form-control" name="phoneAdd" id="phoneAdd">
             </div>
             <div class="form-group">
-              <label for="nidAdd">Cedula/Rif</label>
+              <label for="nidAdd">Cedula</label>
               <input type="text" class="form-control" name="dniAdd" id="dniAdd">
             </div>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button onclick="addProvider()" id="btnSubmitAdd" class="btn btn-primary">Agregar</button>
+          <button onclick="addClient()" id="btnSubmitAdd" class="btn btn-primary">Agregar</button>
         </div>
       </div>
     </div>
@@ -165,7 +165,7 @@ checkSession();
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Editar Proveedores</h5>
+          <h5 class="modal-title" id="staticBackdropLabel">Editar Clientes</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -173,8 +173,8 @@ checkSession();
         <div class="modal-body">
           <form id="formEdit">
             <div class="form-group">
-            <input type="text" class="form-control d-none" name="idEdit" id="idEdit" >
-              <label for="nameAdd">Nombre/Empresa</label>
+            <input type="text" class="form-control" name="idEdit" id="idEdit" >
+              <label for="nameAdd">Nombre</label>
               <input type="text" class="form-control" name="nameEdit" id="nameEdit" >
             </div>
             <div class="form-group">
@@ -182,14 +182,14 @@ checkSession();
               <input type="text" class="form-control" name="phoneEdit" id="phoneEdit">
             </div>
             <div class="form-group">
-              <label for="nidAdd">Cedula/Rif</label>
+              <label for="nidAdd">Cedula</label>
               <input type="text" class="form-control" name="dniEdit" id="dniEdit">
             </div>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button onclick="editProvider()" id="btnSubmitEdit" class="btn btn-primary">Editar</button>
+          <button onclick="editClients()" id="btnSubmitEdit" class="btn btn-primary">Editar</button>
         </div>
       </div>
     </div>
@@ -216,7 +216,7 @@ checkSession();
     
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
-  <script src="../scripts/Providers.js"></script>
+  <script src="../scripts/Clients.js"></script>
 </body>
 
 </html>

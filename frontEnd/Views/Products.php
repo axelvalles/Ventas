@@ -59,7 +59,7 @@ checkSession();
             <a class="nav-link" href="Products.php">Prodcutos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Clientes</a>
+            <a class="nav-link" href="Clients.php">Clientes</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Ventas</a>

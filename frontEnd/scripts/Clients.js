@@ -1,18 +1,17 @@
-let table = document.getElementById('table')
-    let formAdd = document.getElementById('formAdd')
 
-    const getDataProviders = () => {
-        fetch('../../backend/App/Services/Providers/GetProviders.php', {
-        method: 'GET',
-        body: null
-    })
+let table = document.getElementById('table')
+let formAdd = document.getElementById('formAdd')
+
+    const getDataClients = () =>{
+        fetch('../../backend/App/Services/Clients/Get.php',{
+            method: 'GET',
+            body : null,
+        })
         .then(res => res.json())
         .then(data => {
         printData(data)
         })
     }
-
-
 
     const printData = (ob) => {
         let dataTable = ``
@@ -48,20 +47,19 @@ let table = document.getElementById('table')
 
     }
 
-
-    const addProvider = () => {
+    const addClient = () => {
         data = new FormData(formAdd)
-        fetch('../../backend/App/Services/Providers/AddProviders.php', {
+        fetch('../../backend/App/Services/Clients/Add.php', {
         method: 'Post',
         body: data
     })
         .then(res => res.json())
         .then(data => {
-            getDataProviders()
+            getDataClients()
             if(data){
             Swal.fire(
             'Exito!',
-            'Proveedor agregado con exito!',
+            'Cliente agregado con exito!',
             'success'  )
 
             }else{
@@ -76,17 +74,24 @@ let table = document.getElementById('table')
         
     }
 
-    const deleteProvider = (id) =>{
+    const cleanModalAdd = () =>{
+        document.getElementById('nameAdd').value = ''
+        document.getElementById('phoneAdd').value = ''
+        document.getElementById('dniAdd').value = ''
+    }
+
+    const deleteClient = (id) =>{
         const data = new FormData;
         data.append('id',id)
-        fetch('../../backend/App/Services/Providers/DeleteProviders.php', {
+        fetch('../../backend/App/Services/Clients/Delete.php', {
         method: 'POST',
         body: data
     })
-        .then(res => res.json())
-        .then(data => {
-                getDataProviders()
-        })
+    .then(res => {
+        getDataClients()
+        res.json()
+    })
+    
     }
 
     const alertDelete = (id) =>{
@@ -103,7 +108,8 @@ let table = document.getElementById('table')
         })
     .then((result) => {
         if (result.value) {
-        deleteProvider(id)
+        deleteClient(id)
+        getDataClients()
         Swal.fire(
             'Eliminado!',
             'El elemnto fue eliminado con exito.',
@@ -113,27 +119,20 @@ let table = document.getElementById('table')
     })
     }
 
-    const cleanModalAdd = () =>{
-        document.getElementById('nameAdd').value = ''
-        document.getElementById('phoneAdd').value = ''
-        document.getElementById('dniAdd').value = ''
-    }
-
-    const editProvider = () =>{
+    const editClients = () =>{
         data = new FormData(formEdit)
-        fetch('../../backend/App/Services/Providers/EditProviders.php', {
+        fetch('../../backend/App/Services/Clients/Edit.php', {
         method: 'Post',
         body: data
     })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
             if(data){
             Swal.fire(
             'Exito!',
-            'Proveedor Editado con exito!',
+            'Cliente Editado con exito!',
             'success'  )
-            getDataProviders()
+            getDataClients()
 
             }else{
             Swal.fire({
@@ -146,7 +145,7 @@ let table = document.getElementById('table')
         })
     }
 
-    const modalEdit = (id) =>{
+    const modalEdit = (id,phone,dni) =>{
         document.getElementById('nameEdit').value= ''
         document.getElementById('phoneEdit').value= phone
         document.getElementById('dniEdit').value= dni
@@ -155,12 +154,8 @@ let table = document.getElementById('table')
     }
 
 
-getDataProviders()
 
 
-let btnClose = document.getElementById('btnClose')
+    
 
-btnClose.addEventListener('click',(e)=>{
-    //e.preventDefault()
-    console.log('funciona');
-})
+    getDataClients()

@@ -14,8 +14,7 @@ use App\Models\Product;
     
     if(isset($_POST['id'])){
         $id = $_POST['id'];
-        echo json_encode($services->delete($id));
+        $services->delete($id);
             
-    }else{
-        echo json_encode('error');
+    
     }

@@ -7,7 +7,6 @@ class Clients{
     public $name;
     public $phone;
     public $dni;
-    public $address;
     public $id_user;
     public $create_at; 	
     public $edited_at;
