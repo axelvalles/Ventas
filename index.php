@@ -24,7 +24,7 @@
             <form id="form">
               <div class="form-group">
                 <label for="user">Usuario</label>
-                <input type="text" class="form-control" id="user" name="user" aria-describedby="userHelp" placeholder="Ingrese usuario">
+                <input onkeyup="toUpperString(this)" type="text" class="form-control" id="user" name="user" aria-describedby="userHelp" placeholder="Ingrese usuario">
                 <small id="userHelp" class="form-text text-muted"></small>
               </div>
               <div class="form-group">
@@ -53,6 +53,7 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
   <script src="frontEnd/scripts/login.js"></script>
+  <script src="frontEnd/scripts/helpers.js"></script>
 </body>
 
 </html>
