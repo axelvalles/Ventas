@@ -47,13 +47,31 @@ const insertDataSelectProduct = (ob) =>{
     
 }
 
-const printSaleData = ()=>{
-    let a = selectProduct.textContent
-    let b = selectClient.value
-    let c = document.getElementById('inputCand').value
-    console.log([a,b,c]);
+selectProduct.addEventListener('change',(e)=>{
+    const data = new FormData;
+    data.append('id',selectProduct.value)
+    if(data.get('id')>0){
+        fetch('../../backend/App/Services/Products/Find.php',{
+            method:'POST',
+            body:data
+        })
+        .then(res => res.json())
+        .then(data =>{
+            console.log(data);
+            document.getElementById('inputStock').value = data.stock
+            document.getElementById('inputPrice').value = data.price+'$'
+            document.getElementById('textArea').textContent = data.description
+        })
+    }else{
+        document.getElementById('inputStock').value = ''
+            document.getElementById('inputPrice').value = ''
+            document.getElementById('textArea').textContent = ''
+    }
     
-}
+})
+
+
+
 
 
 
@@ -62,7 +80,7 @@ GetDataSelectProduct()
 
 
 $(document).ready(function() {
-    
+
 });
 
 

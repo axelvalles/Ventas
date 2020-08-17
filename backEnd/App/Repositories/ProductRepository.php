@@ -33,7 +33,7 @@ class ProductRepository{
     public function find(int $id) : ?Product {
 
         $result = null;
-
+        try{
             $query = $this->_db->prepare('SELECT * FROM products WHERE id = :id');
             $query->bindParam(':id',$id);
             $query->execute();
@@ -43,6 +43,9 @@ class ProductRepository{
             if ($data) {
                 $result=$data;
             }
+        }catch(PDOException $e){
+            $result = null;
+        }
 
         return $result;
 

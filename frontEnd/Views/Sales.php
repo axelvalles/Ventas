@@ -94,20 +94,35 @@ checkSession();
           <form id="formSales">
               <div class="form-group">
               <label>Cliente</label>
-              <select name="selectClient" id="selectClient" class="form-control">
+              <select name="selectClient" id="selectClient" class="form-control form-control-sm">
                   
               </select>
             </div>
 
             <div class="form-group">
               <label for="selectProduct">Producto</label>
-              <select name="selectProduct" id="selectProduct" class="form-control">
+              <select name="selectProduct" id="selectProduct" class="form-control form-control-sm">
               </select>
+            </div>
+
+            <div class="form-group">
+            <label for="textArea">Descripcion</label>
+            <textarea readonly class="form-control form-control-sm" id="textArea"></textarea>
+            </div>
+
+            <div class="form-group"> 
+              <label for="inputStock">Stock</label>
+              <input  readonly class="form-control form-control-sm" type="text" id="inputStock" name="inputStock">
+            </div>
+
+            <div class="form-group"> 
+              <label for="inputPrice">Precio</label>
+              <input readonly class="form-control form-control-sm" type="text" id="inputPrice" name="inputPrice">
             </div>
 
             <div class="form-group"> 
               <label for="inputCand">Cantidad</label>
-              <input  value="1" class="form-control" type="number" id="inputCand" name="inputCand">
+              <input value="1" class="form-control form-control-sm" type="number" id="inputCand" name="inputCand">
             </div>
           </form>
           <button onclick="printSaleData()" class="btn btn-primary">
