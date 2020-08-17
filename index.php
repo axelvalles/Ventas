@@ -19,12 +19,14 @@
 </head>
 
 <body>
-  <div class="container-fluid h-100vh">
+  <div class="container-fluid h-100vh bg-special">
     <div class="row h-100vh justify-content-center align-items-center">
       <div class="col-6">
         <div class="card">
           <div class="card-header p-4 text-center bg-light">
-            <i class="fas fa-user display-1 text-primary"></i>
+            <i class="fas fa-user display-1 text-primary mb-3"></i>
+            <h1 class="h2 text-primary text-center text-uppercase">Inicia Sesión</h1>
+            <p class="h5 text-secondary text-center">Administra tus produtos con facilidad.</p>
           </div>
           <div class="card-body">
             <form id="form">
