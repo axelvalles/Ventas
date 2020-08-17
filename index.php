@@ -8,32 +8,38 @@
   <!-- Add a fivicon -->
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <title>VentasDimeca</title>
+  <title>Sistema de Ventas Dimeca</title>
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/materia/bootstrap.min.css" integrity="sha384-B4morbeopVCSpzeC1c4nyV0d0cqvlSAfyXVfrPJa25im5p+yEN/YmhlgQP/OyMZD" crossorigin="anonymous">
+  <!-- custom styles  -->
+  <link rel="stylesheet" href="/frontEnd/css/index.css">
+  <!-- add font awesone 5 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
 </head>
 
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="col d-flex justify-content-center mt-5">
-        <div class="card text-center w-50">
-          <div class="card-header">
-            <h1 class="d-block">Acceso al sistema</h1>
+  <div class="container-fluid h-100vh">
+    <div class="row h-100vh justify-content-center align-items-center">
+      <div class="col-6">
+        <div class="card">
+          <div class="card-header p-4 text-center bg-light">
+            <i class="fas fa-user display-1 text-primary"></i>
           </div>
           <div class="card-body">
-
             <form id="form">
               <div class="form-group">
-                <label for="user">Usuario</label>
-                <input onkeyup="toUpperString(this)" type="text" class="form-control" id="user" name="user" aria-describedby="userHelp" placeholder="Ingrese usuario">
+                <label class="h5" for="user">Usuario</label>
+                <input autocomplete="off" maxlength="12" onkeyup="toUpperString(this)" type="text" class="form-control" id="user" name="user" aria-describedby="userHelp" placeholder="Ingrese usuario">
                 <small id="userHelp" class="form-text text-muted"></small>
               </div>
               <div class="form-group">
-                <label for="password">Contraseña</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Ingrese contraseña">
+                <label class="h5" for="password">Contraseña</label>
+                <input maxlength="8" type="password" class="form-control" id="password" name="password" placeholder="Ingrese contraseña">
               </div>
-              <button type="submit" class="btn btn-primary btn-block mb-2">Ingresar</button>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block mb-2">Ingresar</button>
+              </div>
             </form>
 
           </div>
