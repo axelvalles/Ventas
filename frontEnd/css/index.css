@@ -5,3 +5,8 @@ body {
 .h-100vh {
   height: 100vh;
 }
+.bg-special {
+  background: url(../img/bg1.jpg);
+  background-size: cover;
+  background-position: center center;
+}
