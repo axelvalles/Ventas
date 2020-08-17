@@ -2,6 +2,8 @@
 require_once '../../backEnd/Functions/Login/CheckSession.php';
 session_start();
 
+
+
 checkSession();
 ?>
 <!doctype html>
@@ -88,9 +90,12 @@ checkSession();
 
     <!--container main-->
     <div class="container">
+
+    
+    
         <h3 class="">Ventas</h3>
         <div class="row">
-          <div class="col-4">
+          <div class="col-3">
           <form id="formSales">
               <div class="form-group">
               <label>Cliente</label>
@@ -125,7 +130,7 @@ checkSession();
               <input value="1" class="form-control form-control-sm" type="number" id="inputCand" name="inputCand">
             </div>
           </form>
-          <button onclick="printSaleData()" class="btn btn-primary">
+          <button onclick="injectDataObj()" class="btn btn-primary">
               <span>
                 <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-cart-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M8.5 5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 .5-.5z"/>
@@ -136,57 +141,22 @@ checkSession();
           </div>
 
 
-          <div class="col-8">
+          <div class="col-9">
           <p class="lead">Factura #1</p>
           <table class="table border">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
                     <th scope="col">Producto</th>
-                    <th scope="col">Precio</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Precio Unit.</th>
                     <th scope="col">Cantidad</th>
                     <th scope="col">Total</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <div>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>jabon</td>
-                      <td>3000</td>
-                      <td>2</td>
-                      <td>6000</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>jabon</td>
-                      <td>3000</td>
-                      <td>2</td>
-                      <td>6000</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>jabon</td>
-                      <td>3000</td>
-                      <td>2</td>
-                      <td>6000</td>
-                    </tr>
-                  </div>
-                  
-                  <tr>
-                    <td colspan="3">
-                      <button  class="btn btn-success">
-                        <span><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-cart-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M11.354 5.646a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708 0z"/>
-                        <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
-                        </svg></span>
-                        Totalizar Venta</button></td>
+                <tbody id="tableBody">
 
-                    <td class="font-weight-bold">TOTAL:</td>
-                    <td class="font-weight-bold">12000</td>
-                  </tr>
-                  
                 </tbody>
+                
                 
               </table>
               
@@ -196,6 +166,9 @@ checkSession();
 
     
     </div>
+
+    <input readonly class="d-none" type="text" id="userId" 
+    value="<?php echo ($_SESSION['user']['id']);?>">
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
