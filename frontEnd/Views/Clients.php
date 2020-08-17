@@ -61,7 +61,7 @@ checkSession();
             <a class="nav-link" href="Clients.php">Clientes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Ventas</a>
+            <a class="nav-link" href="Sales.php">Ventas</a>
           </li>
           <!--dropdown-->
           <li class="nav-item dropdown d-lg-none">
