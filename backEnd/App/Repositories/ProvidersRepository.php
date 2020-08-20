@@ -32,7 +32,7 @@ class ProvidersRepository{
             $query = $this->_db->prepare('SELECT * FROM providers WHERE id = :id');
             $query->bindParam(':id',$id);
             $query->execute();
-    
+
             $data= $query->fetchObject('App\Models\Providers');
     
             if ($data) {

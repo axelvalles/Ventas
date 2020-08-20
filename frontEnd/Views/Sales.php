@@ -110,6 +110,11 @@ checkSession();
               </select>
             </div>
 
+            <div class="form-group"> 
+              <label for="inputCand">Cantidad</label>
+              <input value="0" class="form-control form-control-sm" type="number" id="inputCand" name="inputCand">
+            </div>
+
             <div class="form-group">
             <label for="textArea">Descripcion</label>
             <textarea readonly class="form-control form-control-sm" id="textArea"></textarea>
@@ -125,10 +130,6 @@ checkSession();
               <input readonly class="form-control form-control-sm" type="text" id="inputPrice" name="inputPrice">
             </div>
 
-            <div class="form-group"> 
-              <label for="inputCand">Cantidad</label>
-              <input value="1" class="form-control form-control-sm" type="number" id="inputCand" name="inputCand">
-            </div>
           </form>
           <button onclick="injectDataObj()" class="btn btn-primary">
               <span>
@@ -142,7 +143,7 @@ checkSession();
 
 
           <div class="col-9">
-          <p class="lead">Factura #1</p>
+          <p class="lead"><span id="contentSaleNumber"></span></p>
           <table class="table border">
                 <thead>
                   <tr>
@@ -169,6 +170,9 @@ checkSession();
 
     <input readonly class="d-none" type="text" id="userId" 
     value="<?php echo ($_SESSION['user']['id']);?>">
+
+    <input readonly class="d-none" type="number" id="inputSaleNumber">
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

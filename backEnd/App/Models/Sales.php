@@ -8,6 +8,7 @@ class Sales{
     public $id_product; 	
     public $id_user;
     public $price_by_unit; 	
+    public $cand;
     public $total;
     public $sale_number;
     public $create_at; 	

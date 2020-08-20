@@ -1,5 +1,6 @@
 let selectClient = document.getElementById('selectClient')
 let selectProduct = document.getElementById('selectProduct')
+let dataTableBody = []
 
 const GetDataSelectClient = ()=> {
     fetch('../../backend/App/Services/Clients/Get.php', {
@@ -69,7 +70,34 @@ selectProduct.addEventListener('change',(e)=>{
     
 })
 
-let dataTableBody = []
+const getSaleNumber = ()=>{
+    let content = document.getElementById('contentSaleNumber')
+    fetch('../../backend/App/Services/Sales/GetSaleNumber.php',{
+        method:'get',
+        body:null
+    })
+    .then(response=>response.json())
+    .then(data=>{
+        if(data){
+            num = parseInt(data[0].sale_number)
+            content.innerHTML = `Factura # ${num+1}`
+            document.getElementById('inputSaleNumber').value = num
+        }else{
+            content.innerHTML = `Factura # ${1}`
+            document.getElementById('inputSaleNumber').value = 0
+        }
+        
+    })
+    
+}
+
+const disableSelectClient = ()=>{
+    document.getElementById('selectClient').setAttribute('disabled','disabled')
+}
+
+const enableSelectClient = ()=>{
+    document.getElementById('selectClient').removeAttribute('disabled')
+}
 
 const injectDataObj = ()=>{
     
@@ -89,6 +117,8 @@ const injectDataObj = ()=>{
     user = parseInt(user)
 
     let total= price*cand
+
+    disableSelectClient()
 
     if(codeValue==0 ){
         Swal.fire({
@@ -128,6 +158,8 @@ const injectDataObj = ()=>{
     }
     else{
 
+    let number = document.getElementById('inputSaleNumber').value
+
     let obj = 
     { 
         id_client:client,
@@ -135,7 +167,7 @@ const injectDataObj = ()=>{
         id_user:user,
         price:price,
         total:total,
-        sale_number:1,
+        sale_number:parseInt(number)+1,
         code:codeString,
         description:description,
         cand:cand
@@ -145,6 +177,15 @@ const injectDataObj = ()=>{
     PrintTableBody(dataTableBody)
     console.log(dataTableBody);
     }
+}
+
+const cleanFormSale = ()=>{
+    document.getElementById('selectClient').value = 0
+    document.getElementById('selectProduct').value = 0
+    document.getElementById('textArea').textContent = ''
+    document.getElementById('inputPrice').value = 0
+    document.getElementById('inputCand').value = 0
+    document.getElementById('inputStock').value = 0
 }
 
 const PrintTableBody = (ob)=>{
@@ -181,7 +222,7 @@ const PrintTableBody = (ob)=>{
         `
         <tr>
         <td colspan="2">
-        <button  class="btn btn-success">
+        <button  onclick="createSale()" class="btn btn-success">
         <span><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-cart-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" d="M11.354 5.646a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708 0z"/>
         <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
@@ -220,6 +261,8 @@ const destroySale = () =>{
         if (result.value) {
             dataTableBody = []
             PrintTableBody(dataTableBody)
+            cleanFormSale()
+            enableSelectClient()
         Swal.fire(
             'Lista Vacia',
             'Operacion exitosa',
@@ -229,14 +272,40 @@ const destroySale = () =>{
     })
 }
 
+const createSale = ()=>{
+    
+    console.log(dataTableBody);
+    dataTableBody.forEach(item => {
+        let data = new FormData()
+        data.append('id_client',item.id_client)
+        data.append('id_product',item.id_product)
+        data.append('id_user',item.id_user)
+        data.append('price',item.price)
+        data.append('cand',item.cand)
+        data.append('total',item.total) 
+        data.append('sale_number',item.sale_number)
+        
+        fetch('../../backend/App/Services/Sales/add.php',{
+            method:'POST',
+            body:data  
+        })
+        .then(response=>response.json())
+        .then(data=>{
+            console.log(data);
+            getSaleNumber()
+            dataTableBody = []
+            PrintTableBody(dataTableBody)
+            cleanFormSale()
+            enableSelectClient()
+        })
+    });
+
+}
+
 PrintTableBody(dataTableBody)
-
-
-
 GetDataSelectClient()
 GetDataSelectProduct()
-
-
+getSaleNumber()
 $(document).ready(function() {
 
 });

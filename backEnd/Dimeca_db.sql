@@ -82,6 +82,7 @@ create table  if not EXISTS sales
     id_product int not null,
     id_user int not null,
     price_by_unit float not null,
+    cand float not null,
     total float not null,
     sale_number int NOT NULL,
     create_at datetime DEFAULT CURRENT_TIMESTAMP,
