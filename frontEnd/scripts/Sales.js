@@ -41,14 +41,14 @@ const insertDataSelectProduct = (ob) =>{
     let dataSelect=``
     ob.forEach(item =>{
         dataSelect += 
-        `<option value="${item.id}">${item.code}</option>`
+        `<option value="${item.id}">${item.code}</option>`;
     })
 
     selectProduct.innerHTML = `<option value="0">Selecionar</option>`+ dataSelect
     
 }
 
-selectProduct.addEventListener('change',(e)=>{
+selectProduct.addEventListener('change',()=>{
     const data = new FormData;
     data.append('id',selectProduct.value)
     if(data.get('id')>0){
@@ -63,7 +63,7 @@ selectProduct.addEventListener('change',(e)=>{
             document.getElementById('textArea').textContent = data.description
         })
     }else{
-        document.getElementById('inputStock').value = ''
+            document.getElementById('inputStock').value = ''
             document.getElementById('inputPrice').value = ''
             document.getElementById('textArea').textContent = ''
     }
@@ -101,8 +101,9 @@ const enableSelectClient = ()=>{
 
 const injectDataObj = ()=>{
     
-    let codeValue = document.getElementById('selectProduct').selectedIndex
-    let codeString =  document.getElementById('selectProduct').options[codeValue].textContent 
+    let codeIndex = document.getElementById('selectProduct').selectedIndex
+    let codeString =  document.getElementById('selectProduct').options[codeIndex].textContent
+    let codeValue = document.getElementById('selectProduct').value 
     let description = document.getElementById('textArea').textContent
     let price = document.getElementById('inputPrice').value
     let cand = document.getElementById('inputCand').value
@@ -121,6 +122,7 @@ const injectDataObj = ()=>{
     disableSelectClient()
 
     if(codeValue==0 ){
+        enableSelectClient()
         Swal.fire({
             position: 'Center',
             icon: 'error',
@@ -130,6 +132,7 @@ const injectDataObj = ()=>{
         })
     }
     else if(client == 0){
+        enableSelectClient()
         Swal.fire({
             position: 'Center',
             icon: 'error',
@@ -139,6 +142,7 @@ const injectDataObj = ()=>{
         })
     }
     else if(cand <= 0){
+        enableSelectClient()
         Swal.fire({
             position: 'Center',
             icon: 'error',
@@ -148,6 +152,7 @@ const injectDataObj = ()=>{
         })
     }
     else if(stock <= 0){
+        enableSelectClient()
         Swal.fire({
             position: 'Center',
             icon: 'error',

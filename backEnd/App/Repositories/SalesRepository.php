@@ -35,7 +35,7 @@ class SalesRepository{
             $query->execute();
             $result='ok';
         }catch(PDOException $e){
-            $result = null;
+            $result = $e;
         }
 
 
