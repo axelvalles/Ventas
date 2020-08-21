@@ -120,7 +120,7 @@ checkSession();
             </div>
             <div class="form-group">
               <label for="phoneAdd">Telefono</label>
-              <input type="text" class="form-control" name="phoneAdd" id="phoneAdd">
+              <input onkeyup="formatNumberPhone(this)" maxlength="14" type="text" class="form-control" name="phoneAdd" id="phoneAdd">
             </div>
             <div class="form-group">
               <label for="nidAdd">Cedula</label>
@@ -182,7 +182,6 @@ checkSession();
 
 
   <?php include 'scripts.php' ?>
-
   <script src="../scripts/Clients.js"></script>
 </body>
 
