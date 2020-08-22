@@ -56,7 +56,7 @@ checkSession();
           <form id="formAdd">
             <div class="form-group">
               <label for="nameAdd">Nombre</label>
-              <input type="text" class="form-control" name="nameAdd" id="nameAdd">
+              <input onkeyup="formatLetter(this)" type="text" class="form-control" name="nameAdd" id="nameAdd">
             </div>
             <div class="form-group">
               <label for="phoneAdd">Telefono</label>
@@ -94,7 +94,7 @@ checkSession();
             <div class="form-group">
               <input type="text" class="form-control" name="idEdit" id="idEdit">
               <label for="nameAdd">Nombre</label>
-              <input type="text" class="form-control" name="nameEdit" id="nameEdit">
+              <input onkeyup="formatLetter(this)" type="text" class="form-control" name="nameEdit" id="nameEdit">
             </div>
             <div class="form-group">
               <label for="phoneAdd">Telefono</label>

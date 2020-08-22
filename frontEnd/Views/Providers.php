@@ -95,7 +95,7 @@ checkSession();
             <div class="form-group">
               <input type="text" class="form-control d-none" name="idEdit" id="idEdit">
               <label for="nameAdd">Nombre/Empresa</label>
-              <input type="text" class="form-control" name="nameEdit" id="nameEdit">
+              <input onkeyup="formatLetter(this)" type="text" class="form-control" name="nameEdit" id="nameEdit">
             </div>
             <div class="form-group">
               <label for="phoneAdd">Telefono</label>
