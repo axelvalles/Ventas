@@ -14,7 +14,7 @@
 
         <a class="dropdown-item" href="#">Ver Perfil</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Cerrar sesion</a>
+        <a class="dropdown-item" href="/logout.php">Cerrar sesion</a>
       </div>
     </li>
   </ul>
@@ -52,7 +52,7 @@
 
           <a class="dropdown-item" href="#">Ver Perfil</a>
           <div class="dropdown-divider"></div>
-          <a id="btnClose" class="dropdown-item" href=#>Cerrar sesion</a>
+          <a href="/logout.php" id="btnClose" class="dropdown-item">Cerrar sesion</a>
         </div>
       </li>
       <!--dropdown-->
