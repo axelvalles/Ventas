@@ -23,7 +23,7 @@ checkSession();
 
             <a class="dropdown-item" href="#">Ver Perfil</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Cerrar sesion</a>
+            <a class="dropdown-item" href="../../logout.php">Cerrar sesion</a>
           </div>
         </li>
       </ul>
@@ -69,7 +69,31 @@ checkSession();
       </div>
     </nav>
   </div>
+
+  <canvas id="myChart" style="height: 50%; width: 50%;"></canvas>
   <?php include 'scripts.php' ?>
+
+  <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'bar',
+
+    // The data for our dataset
+    data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [{
+            label: 'Producto mas vendido del mes',
+            backgroundColor: ['rgb(255, 99, 132)','red','blue','green','black','purple','pink'],
+            borderColor: 'rgb(255, 99, 132)',
+            data: [0, 10, 5, 2, 20, 30, 45]
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+  </script>
 </body>
 
 </html>

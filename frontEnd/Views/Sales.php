@@ -3,7 +3,6 @@ require_once '../../backEnd/Functions/Login/CheckSession.php';
 checkSession();
 ?>
 <?php include 'head.php'; ?>
-
   <body>
     <div class="container-fluid bg-light">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -117,7 +116,7 @@ checkSession();
             </div>
 
           </form>
-          <button onclick="injectDataObj()" class="btn btn-primary mb-5">
+          <button onclick="injectDataObj()" class="btn btn-primary">
               <span>
                 <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-cart-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M8.5 5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 .5-.5z"/>
@@ -179,7 +178,6 @@ checkSession();
     value="<?php echo ($_SESSION['user']['id']);?>">
 
     <input readonly class="d-none" type="number" id="inputSaleNumber">
-
     <?php include 'scripts.php' ?>
     <script src="../scripts/Sales.js"></script>
   </body>

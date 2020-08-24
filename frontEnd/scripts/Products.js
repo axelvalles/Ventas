@@ -99,6 +99,7 @@ let table = document.getElementById('table')
         })
 
         select.innerHTML = dataSelect
+        
     }
 
     const deleteProduct = (id) =>{
@@ -188,10 +189,11 @@ let table = document.getElementById('table')
     getDataProducts()
 
     GetDataSelect()
-
     $(document).ready(function() {
         $('select').select2();
     });
+
+    
 
 
     
