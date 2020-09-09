@@ -74,6 +74,25 @@ add constraint UQ_code unique(code),
 ADD CONSTRAINT `Fk_products_user` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`),
 ADD CONSTRAINT `Fk_products_provider` FOREIGN KEY (`id_provider`) REFERENCES `providers` (`id`);
 
+drop table  if EXISTS salesHeader;
+create table  if not EXISTS salesHeader
+(
+    id int AUTO_INCREMENT primary key not null,
+    id_client int not null,
+    id_user int not null,
+    total float not null,
+    sale_number int NOT NULL,
+    create_at datetime DEFAULT CURRENT_TIMESTAMP,
+    edited_at datetime DEFAULT CURRENT_TIMESTAMP
+    
+);
+
+alter table salesHeader
+ADD CONSTRAINT `Fk_saleHeader_client` FOREIGN KEY (`id_client`) REFERENCES `clients` (`id`),
+ADD CONSTRAINT `Fk_saleHeader_user` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`),
+ADD CONSTRAINT `Fk_saleHeader_saleNumber` FOREIGN KEY (`sale_number`) REFERENCES `sales` (`sale_number`)
+;
+
 drop table  if EXISTS sales;
 create table  if not EXISTS sales
 (

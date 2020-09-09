@@ -3,8 +3,10 @@
 namespace App\Repositories;
 
 use App\Models\Sales;
+use App\Models\SaleHeader;
 use VentasDimeca\Database\DbProvider;
 use PDOException;
+use PDO;
 
 class SalesRepository{
 
@@ -41,6 +43,45 @@ class SalesRepository{
 
         return $result;
 
+    }
+
+    public function AddHeader(SaleHeader $model) :?string{
+        $result = null;
+        try{
+            $now = date('Y-m-d H:i:s');
+            $query = $this->_db->prepare('INSERT INTO salesheader (id_client, id_user, total, sale_number, create_at, edited_at) 
+            VALUES (:id_client,:id_user,:total,:sale_number,:create_at,:edited_at)');
+            $query->bindParam(':id_client',$model->id_client);
+            $query->bindParam(':id_user',$model->id_user);
+            $query->bindParam(':total',$model->total);
+            $query->bindParam(':sale_number',$model->sale_number);
+            $query->bindParam(':create_at',$now);
+            $query->bindParam(':edited_at',$now);
+            $query->execute();
+            $result='HeaderCreado';
+        }catch(PDOException $e){
+            $result = $e;
+        }
+
+        return $result;
+    }
+
+    public function findHeader(): Array {
+
+        try {
+            $query = $this->_db->prepare('SELECT s.sale_number, (u.name) as user, (c.name) as client, c.dni, s.total , s.create_at
+            FROM salesheader as s 
+            INNER JOIN clients as c
+                ON s.id_client = c.id
+            INNER JOIN users as u
+                ON s.id_user = u.id
+            ORDER BY s.sale_number DESC');
+            $query->execute();
+            $result = $query->fetchAll();
+        } catch (\Throwable $th) {
+            $result=[];
+        }
+        return $result;
     }
 
     public function getSaleNumber() {

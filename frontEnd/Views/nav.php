@@ -14,7 +14,7 @@
 
         <a class="dropdown-item" href="#">Ver Perfil</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="/logout.php">Cerrar sesion</a>
+        <a class="dropdown-item" href="../../logout.php">Cerrar sesion</a>
       </div>
     </li>
   </ul>
@@ -26,6 +26,14 @@
       <li class="nav-item">
         <a class="nav-link" href="Main.php">Inicio</a>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Ventas
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="nav-link" href="Sales.php">Realizar Venta</a>
+          <a class="nav-link" href="Record.php">Facturas</a>
+        </div>
       <li class="nav-item ">
         <a class="nav-link" href="Providers.php">Proveedores</a>
       </li>
@@ -34,9 +42,6 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="Clients.php">Clientes</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="Sales.php">Ventas</a>
       </li>
       <!--dropdown-->
       <li class="nav-item dropdown d-lg-none">

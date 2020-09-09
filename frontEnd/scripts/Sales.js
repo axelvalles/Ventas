@@ -1,6 +1,10 @@
 let selectClient = document.getElementById('selectClient')
 let selectProduct = document.getElementById('selectProduct')
 let dataTableBody = []
+let totalHeader=0
+let id_user
+let id_client
+let sale_number
 
 const GetDataSelectClient = ()=> {
     fetch('../../backend/App/Services/Clients/Get.php', {
@@ -165,6 +169,11 @@ const injectDataObj = ()=>{
 
     let number = document.getElementById('inputSaleNumber').value
 
+    id_client=client
+    id_user=user
+    totalHeader += total
+    sale_number = parseInt(number)+1
+
     let obj = 
     { 
         id_client:client,
@@ -262,6 +271,8 @@ const destroySale = () =>{
 const createSale = ()=>{
     
     console.log(dataTableBody);
+    let totalHeader2 = totalHeader
+    totalHeader=0
     dataTableBody.forEach(item => {
         let data = new FormData()
         data.append('id_client',item.id_client)
@@ -294,6 +305,20 @@ const createSale = ()=>{
 
         })
     });
+    let dataHeader = new FormData()
+    dataHeader.append('total',totalHeader2)
+    dataHeader.append('id_client',id_client)
+    dataHeader.append('id_user',id_user)
+    dataHeader.append('sale_number',sale_number)
+    fetch('../../backend/App/Services/Sales/addHeader.php',{
+        method:'POST',
+        body:dataHeader  
+    })
+    .then(response=>response.json())
+    .then(data =>{
+        console.log(data);
+    })
+
 
 }
 
